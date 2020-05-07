@@ -1,0 +1,10 @@
+Criterios de Done:
+
+1. Cada función debe estar comentada e identada para una mejor interpretación
+
+2. Verificar que los criterios de aceptación de cada US estén debidamente cumplidos.
+
+3. Al menos un miembro del equipo debe revisar el trabajo
+que realiza otro compañero.
+
+4. Cada commit debe contemplar una breve descripción de lo realizado. 
