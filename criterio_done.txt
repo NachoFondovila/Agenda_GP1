@@ -1,4 +1,4 @@
-Criterios de Done:
+Criterios de DONE:
 
 1. Cada función debe estar comentada e identada para una mejor interpretación
 
