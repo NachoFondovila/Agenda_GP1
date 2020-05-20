@@ -1,0 +1,78 @@
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2020-05-20 20:38:10.95
+
+-- tables
+-- Table: TPE_MET_AEROPUERTO
+CREATE TABLE TPE_MET_AEROPUERTO (
+    id_aeropuerto int NOT NULL,
+    nombre varchar(20) NOT NULL,
+    ciudad varchar(30) NOT NULL,
+    CONSTRAINT TPE_MET_AEROPUERTO_pk PRIMARY KEY (id_aeropuerto)
+);
+
+-- Table: TPE_MET_ESCALA
+CREATE TABLE TPE_MET_ESCALA (
+    id_aeropuerto int NOT NULL,
+    id_vuelo int NOT NULL,
+    tiempo_escala int NOT NULL,
+    CONSTRAINT TPE_MET_ESCALA_pk PRIMARY KEY (id_aeropuerto,id_vuelo)
+);
+
+-- Table: TPE_MET_USUARIO
+CREATE TABLE TPE_MET_USUARIO (
+    email varchar(50) NOT NULL,
+    nombre varchar(20) NOT NULL,
+    apellido varchar(20) NOT NULL,
+    fecha_nac timestamp NULL,
+    CONSTRAINT TPE_MET_USUARIO_pk PRIMARY KEY (email)
+);
+
+-- Table: TPE_MET_VIAJE
+CREATE TABLE TPE_MET_VIAJE (
+    id_viaje int NOT NULL,
+    email varchar(50) NOT NULL,
+    CONSTRAINT TPE_MET_VIAJE_pk PRIMARY KEY (id_viaje,email)
+);
+
+-- Table: TPE_MET_VUELO
+CREATE TABLE TPE_MET_VUELO (
+    id_vuelo int NOT NULL,
+    fecha_inic timestamp NOT NULL,
+    fecha_fin timestamp NOT NULL,
+    cod_reserva int NOT NULL,
+    compania varchar(20) NOT NULL,
+    aeronave text NOT NULL,
+    id_aer_origen int NOT NULL,
+    id_aer_destino int NOT NULL,
+    id_viaje int NOT NULL,
+    email varchar(50) NOT NULL,
+    CONSTRAINT TPE_MET_VUELO_pk PRIMARY KEY (id_vuelo)
+);
+
+-- foreign keys
+-- Reference: FK_TPE_AEROPUERTO_DESTINO (table: TPE_MET_VUELO)
+ALTER TABLE TPE_MET_VUELO ADD CONSTRAINT FK_TPE_AEROPUERTO_DESTINO FOREIGN KEY FK_TPE_AEROPUERTO_DESTINO (id_aer_origen)
+    REFERENCES TPE_MET_AEROPUERTO (id_aeropuerto);
+
+-- Reference: FK_TPE_AEROPUERTO_ORIGEN (table: TPE_MET_VUELO)
+ALTER TABLE TPE_MET_VUELO ADD CONSTRAINT FK_TPE_AEROPUERTO_ORIGEN FOREIGN KEY FK_TPE_AEROPUERTO_ORIGEN (id_aer_destino)
+    REFERENCES TPE_MET_AEROPUERTO (id_aeropuerto);
+
+-- Reference: FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO (table: TPE_MET_ESCALA)
+ALTER TABLE TPE_MET_ESCALA ADD CONSTRAINT FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO FOREIGN KEY FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO (id_aeropuerto)
+    REFERENCES TPE_MET_AEROPUERTO (id_aeropuerto);
+
+-- Reference: FK_TPE_MET_ESCALA_TPE_MET_VUELO (table: TPE_MET_ESCALA)
+ALTER TABLE TPE_MET_ESCALA ADD CONSTRAINT FK_TPE_MET_ESCALA_TPE_MET_VUELO FOREIGN KEY FK_TPE_MET_ESCALA_TPE_MET_VUELO (id_vuelo)
+    REFERENCES TPE_MET_VUELO (id_vuelo);
+
+-- Reference: FK_TPE_MET_VIAJE_TPE_MET_USUARIO (table: TPE_MET_VIAJE)
+ALTER TABLE TPE_MET_VIAJE ADD CONSTRAINT FK_TPE_MET_VIAJE_TPE_MET_USUARIO FOREIGN KEY FK_TPE_MET_VIAJE_TPE_MET_USUARIO (email)
+    REFERENCES TPE_MET_USUARIO (email);
+
+-- Reference: FK_TPE_MET_VUELO_TPE_MET_VIAJE (table: TPE_MET_VUELO)
+ALTER TABLE TPE_MET_VUELO ADD CONSTRAINT FK_TPE_MET_VUELO_TPE_MET_VIAJE FOREIGN KEY FK_TPE_MET_VUELO_TPE_MET_VIAJE (id_viaje,email)
+    REFERENCES TPE_MET_VIAJE (id_viaje,email);
+
+-- End of file.
+
