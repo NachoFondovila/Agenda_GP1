@@ -1,0 +1,29 @@
+##1. List of attendees
+
+·        Asistió todo el equipo de desarrollo.
+
+ 
+
+##2. What worked well?
+
+·        Hubo una buena comunicación entre el equipo de desarrollo y el Product Owner.
+
+·        Se pudo desglosar las User Stories para obtener las tareas correspondientes.
+
+·        El poker planning tuvo un resultado parejo entre los integrantes del equipo.
+
+ 
+
+##3. What could be improved?
+
+·        Debemos trabajar desde un principio con Jira e ir corrigiendo sobre la misma herramienta, para poder visualizar los cambios y el progreso de los miembros del equipo.
+
+·        Discutir mas entre los miembros del equipo para poder fijar las tareas del sprint correspondiente y no confundir con users stories de otro sprint.
+
+ 
+
+##4. What will we commit to doing in the next Sprint? (actionable commitments)
+
+·        Vamos a organizar nuestros horarios para poder cumplir con cada tarea asignada.
+
+·        Mejorar la presentación aplicando los diagramas de clases y las correcciones pedidas.
