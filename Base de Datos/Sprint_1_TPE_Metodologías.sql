@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-05-20 20:38:10.95
+-- Last modification date: 2020-05-21 19:14:45.379
 
 -- tables
 -- Table: TPE_MET_AEROPUERTO
@@ -16,6 +16,15 @@ CREATE TABLE TPE_MET_ESCALA (
     id_vuelo int NOT NULL,
     tiempo_escala int NOT NULL,
     CONSTRAINT TPE_MET_ESCALA_pk PRIMARY KEY (id_aeropuerto,id_vuelo)
+);
+
+-- Table: TPE_MET_PLAN
+CREATE TABLE TPE_MET_PLAN (
+    id_plan int NOT NULL,
+    id_viaje int NOT NULL,
+    email varchar(50) NOT NULL,
+    descripcion varchar(30) NOT NULL,
+    CONSTRAINT TPE_MET_PLAN_pk PRIMARY KEY (id_plan,id_viaje,email)
 );
 
 -- Table: TPE_MET_USUARIO
@@ -41,6 +50,7 @@ CREATE TABLE TPE_MET_VUELO (
     fecha_fin timestamp NOT NULL,
     cod_reserva int NOT NULL,
     compania varchar(20) NOT NULL,
+    nro_asiento int NOT NULL,
     aeronave text NOT NULL,
     id_aer_origen int NOT NULL,
     id_aer_destino int NOT NULL,
@@ -65,6 +75,10 @@ ALTER TABLE TPE_MET_ESCALA ADD CONSTRAINT FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO F
 -- Reference: FK_TPE_MET_ESCALA_TPE_MET_VUELO (table: TPE_MET_ESCALA)
 ALTER TABLE TPE_MET_ESCALA ADD CONSTRAINT FK_TPE_MET_ESCALA_TPE_MET_VUELO FOREIGN KEY FK_TPE_MET_ESCALA_TPE_MET_VUELO (id_vuelo)
     REFERENCES TPE_MET_VUELO (id_vuelo);
+
+-- Reference: FK_TPE_MET_PLAN_TPE_MET_VIAJE (table: TPE_MET_PLAN)
+ALTER TABLE TPE_MET_PLAN ADD CONSTRAINT FK_TPE_MET_PLAN_TPE_MET_VIAJE FOREIGN KEY FK_TPE_MET_PLAN_TPE_MET_VIAJE (id_viaje,email)
+    REFERENCES TPE_MET_VIAJE (id_viaje,email);
 
 -- Reference: FK_TPE_MET_VIAJE_TPE_MET_USUARIO (table: TPE_MET_VIAJE)
 ALTER TABLE TPE_MET_VIAJE ADD CONSTRAINT FK_TPE_MET_VIAJE_TPE_MET_USUARIO FOREIGN KEY FK_TPE_MET_VIAJE_TPE_MET_USUARIO (email)
