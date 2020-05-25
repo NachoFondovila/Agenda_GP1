@@ -1,8 +1,7 @@
 <?php
 require_once('libs/Smarty.class.php');
 
-class viajeView{
-    
+class vueloView{
     private $smarty;
 
     function __construct(){
@@ -10,9 +9,10 @@ class viajeView{
         $this->smarty->assign('base',BASE_URL);
     }
 
-    function showViajes($viajes,$user){
+    function showVuelos($vuelos,$user,$viaje){
         $this->smarty->assign('user', $user);
-        $this->smarty->assign('viajes', $viajes);
-        $this->smarty->display('Templates/Viajes.tpl');
+        $this->smarty->assign('vuelos', $vuelos);
+        $this->smarty->assign('viaje', $viaje);
+        $this->smarty->display('Templates/Vuelos.tpl');
     }
 }

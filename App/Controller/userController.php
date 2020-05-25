@@ -8,14 +8,14 @@ class userController {
     private $user;
 
     public function __construct() {
-        $this->view= new viajeView();
+        $this->view = new viajeView();
         $this->user->nombre="Nacho";
         $this->user->mail="ifondovila@gmail.com";
-        var_dump($this->user);
-       /* if (session_status() != PHP_SESSION_ACTIVE){
-           session_start();
-            $this->login($user);
-        } */ 
+        // var_dump($this->user);
+        // if (session_status() != PHP_SESSION_ACTIVE){
+        //    session_start();
+        //     $this->login($this->user);
+        // } 
     }
 
     public function login($user) {
@@ -33,7 +33,7 @@ class userController {
     }
 
     public function getLoggedUser() {
-        if (! isset($_SESSION['USERNAME'])) {
+        if (!isset($_SESSION['USERNAME'])) {
            return null;
         }
         // var_dump($_SESSION);die();
@@ -42,10 +42,10 @@ class userController {
         }
     }
 
-    public function showView(){
-        $user=$this->getLoggedUser();
-        $viajes=0;
-        $view->showViajes($user,$viajes);
-    }
+    // public function showView(){
+    //     $user = $this->getLoggedUser();
+    //     $viajes = 0;
+    //     $this->view->showViajes($user,$viajes);
+    // }
 
 }

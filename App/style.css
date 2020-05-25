@@ -1,0 +1,112 @@
+/* Estilos generales---------------------- */
+/* Imagen del logo */
+.logo{
+    display: flex;
+    justify-content: center;
+}
+.logo img{
+    height: auto;
+    width: 15vw;
+}
+/* Estilos de showViajes----------------- */
+/* Form de crear viaje----------------- */
+.formViaje{
+    width: 80vw;
+    margin: auto;
+}
+.centrado{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vw;
+    margin-top: 4vw;
+}
+.formViaje textarea{
+    width: 80vw;
+    min-width: 80vw;
+    max-width: 80vw;
+    margin-top: 2vw;
+    margin-bottom: 4vw;
+    padding: 2vw;
+    padding-top: 1vw;
+}
+.formViaje input, .formViaje textarea{
+    border-radius: 8px;
+    border: 1px solid #777;
+}
+.formViaje input[type=text]{
+    height: 5vw;
+    width: 20vw;
+    padding-left: 2vw;
+}
+.formViaje input[type=submit]{
+    height: 7vw;
+    width: 20vw;
+    margin: auto;
+    background: inherit;
+    color: #4e4e4e;
+    border: 1px solid #777;
+}
+.formViaje input[type=submit]:hover{
+    cursor: pointer;
+    background: #efefef;
+}
+.formViaje input[type=submit]:active{
+    color: #1426ad;
+}
+/* Lista de mostrar viajes------------- */
+.list4columnas{
+    width: 80vw;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.list4columnas li{
+    list-style: none;
+}
+.list4columnas a{
+    text-decoration: none;
+}
+.list4columnas h3{
+    margin: 0;
+    color: #4e4e4e;
+}
+.list4columnas div{
+    padding: 2.3vw;
+    border: 1px solid #777;
+    border-radius: 2.3vw;
+    margin-bottom: 4vw;
+    margin-right: 1vw;
+}
+.list4columnas a div:hover{
+    background: #efefef;
+}
+.list4columnas a div h3:active{
+    color: #1426ad;
+}
+/* Estilos de showViaje/nnnn----------------- */
+.formVuelo{
+    display: flex;
+}
+.formVuelo input[type="date"], .formVuelo input[type="number"], .formVuelo input[type="text"]{
+    height: 8vw;
+    width: 25vw;
+    padding-left: 2vw;
+}
+.formVuelo input[type="submit"]{
+    margin-top: 4vw;
+}
+.listInputs{
+    width: 80vw;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.listInputs{
+    list-style: none;
+}
