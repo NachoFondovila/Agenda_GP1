@@ -1,29 +1,29 @@
 {include file="header.tpl"}
-    <form action="addViaje" method="POST" class="formViaje">
+    {* <form action="addViaje" method="POST" class="formViaje"> *}
         <h2 class="centrado">{$viaje}</h2>
-        <textarea name="" cols="40" rows="5" class="centrado" 
+        {* <textarea name="" cols="40" rows="5" class="centrado" 
             placeholder="Descripción" value=""></textarea>
         <input type="submit" class="centrado" value="Agregar">
-    </form>
+    </form> *}
 
     <form action="addVuelo" method="POST" class="formViaje formVuelo">
         <div>
-            {if $vuelos|@count != 0}
-            {* {if $vuelos != null} *}
+            {if $vuelos!=null  && $vuelos|@count != 0}
             {* si el arreglo de vuelos no está vacío.. *}
                 <h3 class="centrado">Agregá una escala</h3>
             {else}
                 <h2 class="centrado">Personalizá tu vuelo</h2>
             {/if}
                 <ul class="listInputs">
+                    <input type="hidden" name="viaje" value={$viaje}
                     <li>
-                        <input type="number" placeholder="Número de vuelo">
+                        <input name="Nvuelo" type="number" placeholder="Número de vuelo">
                     </li>
                     <li>
-                        <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
+                        <input type="text" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
                     </li>
                     <li>
-                        <input type="text" placeholder="Compañia">
+                        <input name="compy" type="text" placeholder="Compañía">
                     </li>
                 </ul>
                 <input type="submit" class="centrado" value="Agregar">

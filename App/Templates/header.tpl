@@ -5,7 +5,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        {* {$css} *}
         <link rel=stylesheet href="{$base}/style.css" type="text/css" media=screen>
         <title>Flying App</title>
     </head>
@@ -14,7 +13,7 @@
 
     <input type="hidden" id="user_id" value={$user['MAIL']}>
 
-        <ul class="">
+        <!--<ul class="">
             {if ($user['USERNAME']=='')}
                 <li class="nav-item">
                     <a class="">Visitante</a>
@@ -26,6 +25,14 @@
             {/if}
         </ul>
         <div class="logo">
-            {* <a href= "http://localhost/GitHub/Tpe_Web2/ver"> <h2>Inicio</h2> </a> *}
+          <a href= "{$base}"> 
             <img src="{$base}FlyingApp.png">
-        </div>  
+          </a>
+        </div> !-->
+
+        <div class="logo">
+            <a class=" ">{$user['USERNAME']}</a>
+            <a href= "{$base}"> 
+                <img src="{$base}FlyingApp.png">
+            </a>
+        </div>   

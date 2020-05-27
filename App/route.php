@@ -10,7 +10,10 @@ define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"]
 
 $r= new Router();
 
-$r->addRoute("showViaje/:VIAJE","GET","vueloController","showVuelos");
+$r->addRoute("addViaje","POST","viajeController","addViaje");
+$r->addRoute("showVuelos/:VIAJE","GET","vueloController","showVuelos");
+$r->addRoute("addVuelo","POST","vueloController","addVuelo");
+
 // $r->addRoute("viajes","GET","userController","showView");
 // no necesaria hasta que cambiemos el default..
 

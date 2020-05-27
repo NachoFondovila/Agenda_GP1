@@ -1,92 +1,187 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-05-21 19:14:45.379
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-05-2020 a las 01:02:46
+-- Versión del servidor: 10.1.40-MariaDB
+-- Versión de PHP: 7.3.5
 
--- tables
--- Table: TPE_MET_AEROPUERTO
-CREATE TABLE TPE_MET_AEROPUERTO (
-    id_aeropuerto int NOT NULL,
-    nombre varchar(20) NOT NULL,
-    ciudad varchar(30) NOT NULL,
-    CONSTRAINT TPE_MET_AEROPUERTO_pk PRIMARY KEY (id_aeropuerto)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
--- Table: TPE_MET_ESCALA
-CREATE TABLE TPE_MET_ESCALA (
-    id_aeropuerto int NOT NULL,
-    id_vuelo int NOT NULL,
-    tiempo_escala int NOT NULL,
-    CONSTRAINT TPE_MET_ESCALA_pk PRIMARY KEY (id_aeropuerto,id_vuelo)
-);
 
--- Table: TPE_MET_PLAN
-CREATE TABLE TPE_MET_PLAN (
-    id_plan int NOT NULL,
-    id_viaje int NOT NULL,
-    email varchar(50) NOT NULL,
-    descripcion varchar(30) NOT NULL,
-    CONSTRAINT TPE_MET_PLAN_pk PRIMARY KEY (id_plan,id_viaje,email)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- Table: TPE_MET_USUARIO
-CREATE TABLE TPE_MET_USUARIO (
-    email varchar(50) NOT NULL,
-    nombre varchar(20) NOT NULL,
-    apellido varchar(20) NOT NULL,
-    fecha_nac timestamp NULL,
-    CONSTRAINT TPE_MET_USUARIO_pk PRIMARY KEY (email)
-);
+--
+-- Base de datos: `metodologias`
+--
 
--- Table: TPE_MET_VIAJE
-CREATE TABLE TPE_MET_VIAJE (
-    id_viaje int NOT NULL,
-    email varchar(50) NOT NULL,
-    CONSTRAINT TPE_MET_VIAJE_pk PRIMARY KEY (id_viaje,email)
-);
+-- --------------------------------------------------------
 
--- Table: TPE_MET_VUELO
-CREATE TABLE TPE_MET_VUELO (
-    id_vuelo int NOT NULL,
-    fecha_inic timestamp NOT NULL,
-    fecha_fin timestamp NOT NULL,
-    cod_reserva int NOT NULL,
-    compania varchar(20) NOT NULL,
-    nro_asiento int NOT NULL,
-    aeronave text NOT NULL,
-    id_aer_origen int NOT NULL,
-    id_aer_destino int NOT NULL,
-    id_viaje int NOT NULL,
-    email varchar(50) NOT NULL,
-    CONSTRAINT TPE_MET_VUELO_pk PRIMARY KEY (id_vuelo)
-);
+--
+-- Estructura de tabla para la tabla `tpe_met_aeropuerto`
+--
 
--- foreign keys
--- Reference: FK_TPE_AEROPUERTO_DESTINO (table: TPE_MET_VUELO)
-ALTER TABLE TPE_MET_VUELO ADD CONSTRAINT FK_TPE_AEROPUERTO_DESTINO FOREIGN KEY FK_TPE_AEROPUERTO_DESTINO (id_aer_origen)
-    REFERENCES TPE_MET_AEROPUERTO (id_aeropuerto);
+CREATE TABLE `tpe_met_aeropuerto` (
+  `id_aeropuerto` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `ciudad` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Reference: FK_TPE_AEROPUERTO_ORIGEN (table: TPE_MET_VUELO)
-ALTER TABLE TPE_MET_VUELO ADD CONSTRAINT FK_TPE_AEROPUERTO_ORIGEN FOREIGN KEY FK_TPE_AEROPUERTO_ORIGEN (id_aer_destino)
-    REFERENCES TPE_MET_AEROPUERTO (id_aeropuerto);
+-- --------------------------------------------------------
 
--- Reference: FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO (table: TPE_MET_ESCALA)
-ALTER TABLE TPE_MET_ESCALA ADD CONSTRAINT FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO FOREIGN KEY FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO (id_aeropuerto)
-    REFERENCES TPE_MET_AEROPUERTO (id_aeropuerto);
+--
+-- Estructura de tabla para la tabla `tpe_met_escala`
+--
 
--- Reference: FK_TPE_MET_ESCALA_TPE_MET_VUELO (table: TPE_MET_ESCALA)
-ALTER TABLE TPE_MET_ESCALA ADD CONSTRAINT FK_TPE_MET_ESCALA_TPE_MET_VUELO FOREIGN KEY FK_TPE_MET_ESCALA_TPE_MET_VUELO (id_vuelo)
-    REFERENCES TPE_MET_VUELO (id_vuelo);
+CREATE TABLE `tpe_met_escala` (
+  `id_aeropuerto` int(11) NOT NULL,
+  `id_vuelo` int(11) NOT NULL,
+  `tiempo_escala` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Reference: FK_TPE_MET_PLAN_TPE_MET_VIAJE (table: TPE_MET_PLAN)
-ALTER TABLE TPE_MET_PLAN ADD CONSTRAINT FK_TPE_MET_PLAN_TPE_MET_VIAJE FOREIGN KEY FK_TPE_MET_PLAN_TPE_MET_VIAJE (id_viaje,email)
-    REFERENCES TPE_MET_VIAJE (id_viaje,email);
+-- --------------------------------------------------------
 
--- Reference: FK_TPE_MET_VIAJE_TPE_MET_USUARIO (table: TPE_MET_VIAJE)
-ALTER TABLE TPE_MET_VIAJE ADD CONSTRAINT FK_TPE_MET_VIAJE_TPE_MET_USUARIO FOREIGN KEY FK_TPE_MET_VIAJE_TPE_MET_USUARIO (email)
-    REFERENCES TPE_MET_USUARIO (email);
+--
+-- Estructura de tabla para la tabla `tpe_met_plan`
+--
 
--- Reference: FK_TPE_MET_VUELO_TPE_MET_VIAJE (table: TPE_MET_VUELO)
-ALTER TABLE TPE_MET_VUELO ADD CONSTRAINT FK_TPE_MET_VUELO_TPE_MET_VIAJE FOREIGN KEY FK_TPE_MET_VUELO_TPE_MET_VIAJE (id_viaje,email)
-    REFERENCES TPE_MET_VIAJE (id_viaje,email);
+CREATE TABLE `tpe_met_plan` (
+  `id_plan` int(11) NOT NULL,
+  `id_viaje` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `descripcion` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- End of file.
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `tpe_met_usuario`
+--
+
+CREATE TABLE `tpe_met_usuario` (
+  `email` varchar(50) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `apellido` varchar(20) NOT NULL,
+  `fecha_nac` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tpe_met_viaje`
+--
+
+CREATE TABLE `tpe_met_viaje` (
+  `id_viaje` varchar(20) NOT NULL,
+  `descripcion` text NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tpe_met_vuelo`
+--
+
+CREATE TABLE `tpe_met_vuelo` (
+  `id_vuelo` int(11) NOT NULL,
+  `fecha_inic` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fecha_fin` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `cod_reserva` int(11) NOT NULL,
+  `compania` varchar(20) NOT NULL,
+  `nro_asiento` int(11) NOT NULL,
+  `aeronave` text NOT NULL,
+  `id_aer_origen` int(11) NOT NULL,
+  `id_aer_destino` int(11) NOT NULL,
+  `id_viaje` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `tpe_met_aeropuerto`
+--
+ALTER TABLE `tpe_met_aeropuerto`
+  ADD PRIMARY KEY (`id_aeropuerto`);
+
+--
+-- Indices de la tabla `tpe_met_escala`
+--
+ALTER TABLE `tpe_met_escala`
+  ADD PRIMARY KEY (`id_aeropuerto`,`id_vuelo`),
+  ADD KEY `FK_TPE_MET_ESCALA_TPE_MET_VUELO` (`id_vuelo`);
+
+--
+-- Indices de la tabla `tpe_met_plan`
+--
+ALTER TABLE `tpe_met_plan`
+  ADD PRIMARY KEY (`id_plan`,`id_viaje`,`email`),
+  ADD KEY `FK_TPE_MET_PLAN_TPE_MET_VIAJE` (`id_viaje`,`email`);
+
+--
+-- Indices de la tabla `tpe_met_usuario`
+--
+ALTER TABLE `tpe_met_usuario`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `tpe_met_viaje`
+--
+ALTER TABLE `tpe_met_viaje`
+  ADD PRIMARY KEY (`id_viaje`,`email`),
+  ADD KEY `FK_TPE_MET_VIAJE_TPE_MET_USUARIO` (`email`);
+
+--
+-- Indices de la tabla `tpe_met_vuelo`
+--
+ALTER TABLE `tpe_met_vuelo`
+  ADD PRIMARY KEY (`id_vuelo`),
+  ADD KEY `FK_TPE_AEROPUERTO_DESTINO` (`id_aer_origen`),
+  ADD KEY `FK_TPE_AEROPUERTO_ORIGEN` (`id_aer_destino`),
+  ADD KEY `FK_TPE_MET_VUELO_TPE_MET_VIAJE` (`id_viaje`,`email`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `tpe_met_escala`
+--
+ALTER TABLE `tpe_met_escala`
+  ADD CONSTRAINT `FK_TPE_MET_ESCALA_TPE_MET_AEROPUERTO` FOREIGN KEY (`id_aeropuerto`) REFERENCES `tpe_met_aeropuerto` (`id_aeropuerto`),
+  ADD CONSTRAINT `FK_TPE_MET_ESCALA_TPE_MET_VUELO` FOREIGN KEY (`id_vuelo`) REFERENCES `tpe_met_vuelo` (`id_vuelo`);
+
+--
+-- Filtros para la tabla `tpe_met_plan`
+--
+ALTER TABLE `tpe_met_plan`
+  ADD CONSTRAINT `FK_TPE_MET_PLAN_TPE_MET_VIAJE` FOREIGN KEY (`id_viaje`,`email`) REFERENCES `tpe_met_viaje` (`id_viaje`, `email`);
+
+--
+-- Filtros para la tabla `tpe_met_viaje`
+--
+ALTER TABLE `tpe_met_viaje`
+  ADD CONSTRAINT `FK_TPE_MET_VIAJE_TPE_MET_USUARIO` FOREIGN KEY (`email`) REFERENCES `tpe_met_usuario` (`email`);
+
+--
+-- Filtros para la tabla `tpe_met_vuelo`
+--
+ALTER TABLE `tpe_met_vuelo`
+  ADD CONSTRAINT `FK_TPE_AEROPUERTO_DESTINO` FOREIGN KEY (`id_aer_origen`) REFERENCES `tpe_met_aeropuerto` (`id_aeropuerto`),
+  ADD CONSTRAINT `FK_TPE_AEROPUERTO_ORIGEN` FOREIGN KEY (`id_aer_destino`) REFERENCES `tpe_met_aeropuerto` (`id_aeropuerto`),
+  ADD CONSTRAINT `FK_TPE_MET_VUELO_TPE_MET_VIAJE` FOREIGN KEY (`id_viaje`,`email`) REFERENCES `tpe_met_viaje` (`id_viaje`, `email`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

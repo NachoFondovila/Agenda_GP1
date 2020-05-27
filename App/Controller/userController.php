@@ -5,17 +5,17 @@ require_once "./View/viajeView.php";
 class userController {
 
     private $view;
-    private $user;
+    private $user='{
+        "nombre": "Nacho",
+        "mail": "ifondovila@gmail.com"
+        }';
 
     public function __construct() {
         $this->view = new viajeView();
-        $this->user->nombre="Nacho";
-        $this->user->mail="ifondovila@gmail.com";
-        // var_dump($this->user);
-        // if (session_status() != PHP_SESSION_ACTIVE){
-        //    session_start();
-        //     $this->login($this->user);
-        // } 
+        if (session_status() != PHP_SESSION_ACTIVE){
+            session_start();
+             $this->login(json_decode($this->user));
+        }
     }
 
     public function login($user) {
@@ -41,11 +41,5 @@ class userController {
             return $_SESSION;
         }
     }
-
-    // public function showView(){
-    //     $user = $this->getLoggedUser();
-    //     $viajes = 0;
-    //     $this->view->showViajes($user,$viajes);
-    // }
 
 }

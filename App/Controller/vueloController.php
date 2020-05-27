@@ -2,22 +2,28 @@
 
 require_once "./View/vueloView.php";
 require_once "./Model/vueloModel.php";
+require_once "userController.php";
+
 
 class vueloController {
 
     private $view;
+    private $user;
     private $model;
 
     public function __construct() {
         $this->view = new vueloView();
         $this->model = new vueloModel();
+        $this->user = new userController();
     }
 
     public function showVuelos($params = null){
-        // $vuelos = $this->model->getVuelos();
-        // Reemplazado cuando esté la tabla
         $viajeNombre = $params[':VIAJE'];
-        if ($viajeNombre == "Nueva York"){
+        $vuelos = $this->model->getVuelos($viajeNombre);
+        $user = $this->user->getLoggedUser();
+        $this->view->showVuelos($vuelos, $user, $viajeNombre);
+        // Reemplazado cuando esté la tabla
+        /*if ($viajeNombre == "Nueva York"){
             $vuelos = array(json_decode($this->vuelosEjemplo)[0]);
         }
         if ($viajeNombre == "Birmingham"){
@@ -29,13 +35,37 @@ class vueloController {
         if ($viajeNombre == "Alicante"){
             $vuelos = array(json_decode($this->vuelosEjemplo)[3]);
         }
-        // estos if feos habría que cambiarlo filtrando del model
+        estos if feos habría que cambiarlo filtrando del model*/
         // $vuelos = json_decode($this->vuelosEjemplo);
-        $user = null;
-        $this->view->showVuelos($vuelos, $user, $viajeNombre);
     }
 
-    private $vuelosEjemplo = '[{
+    public function addVuelo($params = []){
+        var_dump("enrtrotrotrotrotorotrotorotrotr");
+        $id_vuelo = $_POST['Nvuelo']; // hecho
+        $fecha_inic = $_POST['fecha']; // hecho
+        $compania = $_POST['compy']; // hecho
+
+        $fecha_fin = "2020-11-1 23:59:59"; // harcoder de la base de vuelo.
+        $cod_reserva = 1; // harcoder de la base de vuelo.
+        $aeronave = "Nave1"; // harcoder de la base de vuelo.
+        $id_user = $this->user->getLoggedUser();
+        $ae_origen = 1; // harcoder de la base de vuelo.
+        $ae_destino = 2; // harcoder de la base de vuelo.
+        $asiento = 1; // harcoder de la base de vuelo.
+        $id_viaje =$params[':VIAJE'] ; // harcoder de la base de vuelo.
+
+        if(!empty($id_vuelo) && !empty($fecha_inic) && !empty($compania)){
+            // $this->model->addVuelo($id_vuelo, $fecha_inic, $compania);
+            $this->model->addVuelo($id_vuelo, $fecha_inic, $compania, $fecha_fin, $cod_reserva, $aeronave, $id_user, $ae_origen, $ae_destino, $asiento, $id_viaje);
+            header("Location: BASE");
+        }
+        else{
+            echo("faltan completar los campos obligatorios.");
+            //$this->view->displayError("faltan completar los campos obligatorios.");
+        }
+    }
+    }
+    /*private $vuelosEjemplo = '[{
             "nroVuelo": "215",
             "compania": "American Airlines",
             "aeropuertoLlegada": "John F. Kennedy International Airport",
@@ -99,4 +129,4 @@ class vueloController {
             "escala": "-",
             "infoAeronave": "Boeing 737 MAX: Asientos: 162 Económica - 8 Premium, Largo: 39,5 m, Envergadura: 35,9 m, Alcance: 6.500 km"
         }]';
-}
+}*/

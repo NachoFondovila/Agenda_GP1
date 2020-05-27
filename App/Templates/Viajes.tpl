@@ -1,27 +1,17 @@
 {include file="header.tpl"}
 
-    {* <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./FormularioViaje.css">
-        <title>Document</title>
-    </head>
-    <body> *}
-        
-
         <form action="addViaje" method="POST" class="formViaje">
+            <input type="hidden" name="user_id" value={$user['MAIL']}
             <h2 class="centrado">Agrega tu viaje</h2>
-            <input type="text" class="centrado" placeholder="Nombre">
-            <textarea name="" cols="40" rows="5" class="centrado" placeholder="Descripción"></textarea>
+            <input type="text" class="centrado" name="name" placeholder="Nombre">
+            <textarea name="desc" cols="40" rows="5" class="centrado" placeholder="Descripción"></textarea>
             <input type="submit" class="centrado" value="Agregar">
         </form>
         <h2 class="centrado">Mis viajes</h2>
         <ul class="list4columnas">
         {foreach from=$viajes item=$viaje}
             <li>
-                <a href="showViaje/{$viaje->nombre}"><div><h3>{$viaje->nombre}</h3></div></a>
+                <a href="showVuelos/{$viaje->id_viaje}"><div><h3>{$viaje->id_viaje}</h3></div></a>
             </li>
         {/foreach}
         </ul>
