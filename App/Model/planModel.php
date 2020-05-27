@@ -22,3 +22,4 @@ class planModel{
         $viaje= $this->db->prepare("DELETE FROM plan WHERE id_plan=? and id_viaje=? and email=?");
         $viaje->execute(array($idPlan,$idViaje,$email));
     }
+}
