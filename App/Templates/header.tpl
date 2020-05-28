@@ -12,26 +12,12 @@
     <body>
 
     <input type="hidden" id="user_id" value={$user['MAIL']}>
-
-        <!--<ul class="">
+        <div class="logo">
             {if ($user['USERNAME']=='')}
-                <li class="nav-item">
-                    <a class="">Visitante</a>
-                </li>
+                <a class=" ">Visitante</a>
             {else}    
-                <li class="nav-item">
-                    <a class=" ">{$user['USERNAME']}</a>
-                </li>
+                <a class=" ">{$user['USERNAME']}</a>
             {/if}
-        </ul>
-        <div class="logo">
-          <a href= "{$base}"> 
-            <img src="{$base}FlyingApp.png">
-          </a>
-        </div> !-->
-
-        <div class="logo">
-            <a class=" ">{$user['USERNAME']}</a>
             <a href= "{$base}"> 
                 <img src="{$base}FlyingApp.png">
             </a>
