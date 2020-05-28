@@ -14,7 +14,11 @@
     <input type="hidden" id="user_id" value={$user['MAIL']}>
 
         <div class="logo">
-            <a class=" ">{$user['USERNAME']}</a>
+            {if ($user['USERNAME']=='')}
+                <a class=" ">Visitante</a>
+            {else}    
+                <a class=" ">{$user['USERNAME']}</a>
+            {/if}
             <a href= "{$base}"> 
                 <img src="{$base}FlyingApp.png">
             </a>

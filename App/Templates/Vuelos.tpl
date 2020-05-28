@@ -1,7 +1,9 @@
 {include file="header.tpl"}
         <h2 class="centrado">{$viaje}</h2>
 
+
     <form action="{BASE_URL}addVuelo" method="POST" class="formViaje formVuelo">
+
         <div>
             {if $vuelos!=null  && $vuelos|@count != 0}
             {* si el arreglo de vuelos no está vacío.. *}
@@ -16,6 +18,7 @@
                     </li>
                     <li>
                         <input type="date" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
+
                     </li>
                     <li>
                         <input name="compy" type="text" placeholder="Compañía">
@@ -35,6 +38,7 @@
         <div><h3>Código: {$vuelo->cod_reserva}</h3></div>
         <div><h3>Información de la aeronave: {$vuelo->aeronave}</h3></div>
         <br>
+
     {/foreach}
     
     </body>

@@ -32,7 +32,8 @@ class viajeController {
         $nombre = $_POST['name'];
         $descripcion = $_POST['desc'];
         if(!empty($descripcion) && !empty($nombre) && !empty($user)){
-            $this->model->addViaje($nombre, $user, $descripcion);
+
+            $this->model->addViaje($nombre, $user, $descripcion); //Chequear si se pudo agregar para poder mandar el mail
             $this->email->enviarMailConfirmacion($user);
             header("Location: " . BASE_URL);
         }

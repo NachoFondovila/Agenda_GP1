@@ -11,6 +11,7 @@ class vueloModel{
     }
 
     // Agrega un vuelo a la tabla "VUELO" en la Base de Datos, teniendo en cuenta el ID del usuario.
+
     function addVuelo($id_vuelo, $fecha_inic, $compania, $fecha_fin, $cod_reserva, $aeronave, $id_user, $ae_origen, $ae_destino, $asiento, $id_viaje) {
         $viaje= $this->db->prepare("INSERT INTO tpe_met_vuelo(id_vuelo,fecha_inic,fecha_fin,cod_reserva, compania, aeronave,id_aer_origen,id_aer_destino,nro_asiento,id_viaje,email) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
         $viaje->execute(array($id_vuelo, $fecha_inic, $fecha_fin, $cod_reserva, $compania, $aeronave, $ae_origen, $ae_destino,$asiento,$id_viaje,$id_user['MAIL']));

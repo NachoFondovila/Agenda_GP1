@@ -19,6 +19,5 @@
 
     </body>
     </html>
-
-
 {include file="footer.tpl"}
+
