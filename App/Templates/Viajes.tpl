@@ -22,12 +22,3 @@
 
 
 {include file="footer.tpl"}
-
-    {* cada vuelo tiene una fecha y hora ida, fecha y hora de vuelta, aeropuertos de llegada y salida,
-    código de reserva, escala/s si las hay, informacion sobre la aeronave
-
-    cada viaje tiene un nombre, una descripción, una fecha de inicio y fin, y una ciudad de destino 
-    
-    podemos llenar para un vuelo los datos de fecha ida, nro de vuelo y compañía,
-    y el resto de los datos se cargarán automaticamente por el sistema si es que existe 
-    una coincidencia *}

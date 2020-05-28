@@ -1,6 +1,6 @@
 <?php
     require_once ("View/viajeView.php");
-    // require_once ("Model/mailConfirmacionModel.php");
+    require_once ("Model/emailModel.php");
 
     //Librería PHPMailer
 
@@ -14,19 +14,17 @@
     class emailController {
 
         private $viewCargaViaje;
-        private $modelmailConfirmacion;
+        private $emailModel;
 
         public function __construct(){
             $this->viewCargaViaje = new viajeView();
-            // $this->modelmailConfirmacion = new ResetModel();
+            $this->emailModel = new emailModel();
         }
 
-        // public function displayFormViaje() {
-        //     // session_start();
-        //     $carga = $this->viewCargaViaje->displayForm();
-        // }
-
         public function enviarMailConfirmacion() {
+            //Una vez cargado el viaje, se va a ejecutar esta funcion que va a tomar el mail del usuario que esté logueado 
+            //y se va a mandar un correo con el mensaje que aparece debajo.
+
             //Hay que tomar el mail del usuario que esta registrado en el momento.
             //Se puede guardar el mail en el controller que controle el login del usuario.
             
@@ -34,8 +32,9 @@
             // $this->controllerUser->checkLogIn(); Se podria usar esta funcion para chequear que haya alguien logueado
             //Tomar el mail y reemplazarlo en la variable $email = $_SESSION['email']
             
-            $email = $_POST['user_id'];  //Le paso el mail por POST solo como prueba
-            $mensaje = '<html>
+            $email = $_POST['user_id'];  //Tomo el mail cuando agrega un viaje el usuario
+            //Mensaje que va a mandar el mail de la aplicacion
+            $mensaje = '<html> 
                 <head>
                 <title>Viaje Agendado</title>
                 </head>
@@ -44,6 +43,7 @@
                 </body>
                 </html>';
 
+            //Configuracion del mail de la aplicacion
             $email_user = "flyingapp1@gmail.com";
             $email_password = "metod2020";
             $the_subject = "Viaje Registrado";
@@ -77,19 +77,19 @@
               } catch (Exception $e) {
                 echo $e->getMessage();
             }
-
-            //$w2 = new EvTimer(5, 1, leerMail ());
             
-            $this->leerMail();
         }
 
-        public function leerMail() {
+        public function leerMail() { //Esta funcion va a leer los mails del Inbox.
+            //Debajo se va explicado linea por linea a grandes rasgos, que hace dicha funcion.
             
             $hostname = "{imap.gmail.com:993/imap/ssl}INBOX";
             $username = "flyingapp1@gmail.com";
             $password = "metod2020"; 
 
-            $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error());
+            $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error()); //Abre el inbox del gmail
+
+            //Configurado para leer todos los emails entrantes. Dejo la lista para poder filtrar que se va a leer
 
             /* ALL - return all messages matching the rest of the criteria
             ANSWERED - match messages with the \\ANSWERED flag set
@@ -116,13 +116,15 @@
             UNKEYWORD "string" - match messages that do not have the keyword "string"
             UNSEEN - match messages which have not been read yet*/
 
-            $emails = imap_search($inbox,'ALL');
+            $emails = imap_search($inbox,'ALL'); //Va a leer todos los mails del INBOX
 
             $output = '';
 
-            rsort($emails);
+            rsort($emails); //Ordena los correos de mas nuevo a mas viejo
 
             foreach($emails as $mail) {
+
+                //Por cada email se va a guardar el Asunto, Destinatario, Fecha, Email Remitente, Remitente y el Mensaje
 
                 $headerInfo = imap_headerinfo($inbox,$mail);
 
@@ -145,6 +147,16 @@
                 $output.= ' '.$message.'
 
                 ';
+
+                //En $emailRemitente voy a guardar el email del correo recibido
+                $emailRemitente = imap_utf8($headerInfo->reply_to[0]->mailbox).'@'.imap_utf8($headerInfo->reply_to[0]->host);
+
+                $user = $this->emailModel->getUser($emailRemitente); //Me va a retornar el usuario que coincida con el email del remitente
+
+                if($user != null) {
+                    echo "El vuelo fue creado correctamente en la agenda de $user"; //Se debe autocompletar el formulario con los datos obtenidos del email
+                }
+
                 $emailStructure = imap_fetchstructure($inbox,$mail);
 
                 if(!isset($emailStructure->parts)) {

@@ -1,10 +1,5 @@
 {include file="header.tpl"}
-    {* <form action="addViaje" method="POST" class="formViaje"> *}
         <h2 class="centrado">{$viaje}</h2>
-        {* <textarea name="" cols="40" rows="5" class="centrado" 
-            placeholder="Descripción" value=""></textarea>
-        <input type="submit" class="centrado" value="Agregar">
-    </form> *}
 
     <form action="{BASE_URL}addVuelo" method="POST" class="formViaje formVuelo">
         <div>
@@ -21,7 +16,6 @@
                     </li>
                     <li>
                         <input type="date" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
-                        <!-- Arreglar fecha porque en la base figura como timestamp y no lo toma si es text -->
                     </li>
                     <li>
                         <input name="compy" type="text" placeholder="Compañía">
@@ -31,7 +25,6 @@
         </div>
     </form>
     {foreach from=$vuelos item=$vuelo}
-        <h2 class="centrado">{$vuelo->id_viaje}</h2>
         <div><h3>Número de Vuelo: {$vuelo->id_vuelo}</h3></div>
         <div><h3>Compañía: {$vuelo->compania}</h3></div>
         <div><h3>Aeropuerto de salida: {$vuelo->id_aer_origen}</h3></div>
@@ -41,8 +34,9 @@
         <div><h3>Asiento: {$vuelo->nro_asiento}</h3></div>
         <div><h3>Código: {$vuelo->cod_reserva}</h3></div>
         <div><h3>Información de la aeronave: {$vuelo->aeronave}</h3></div>
+        <br>
     {/foreach}
     
     </body>
     </html>
-   {* {include "footer.tpl"} *}
+    {include "footer.tpl"}
