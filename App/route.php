@@ -3,6 +3,7 @@
 // require_once "Controller\userController.php";
 require_once "Controller/viajeController.php";
 require_once "Controller/vueloController.php";
+require_once "Controller/emailController.php";
 require_once "Router.php";
 
 $action=$_GET["action"];

@@ -6,12 +6,12 @@
             <input type="text" class="centrado" name="name" placeholder="Nombre">
             <textarea name="desc" cols="40" rows="5" class="centrado" placeholder="Descripción"></textarea>
             <input type="submit" class="centrado" value="Agregar">
-        </form>
+        </form> 
         <h2 class="centrado">Mis viajes</h2>
         <ul class="list4columnas">
         {foreach from=$viajes item=$viaje}
             <li>
-                <a href="showVuelos/{$viaje->id_viaje}"><div><h3>{$viaje->id_viaje}</h3></div></a>
+                <a href="{BASE_URL}showVuelos/{$viaje->id_viaje}"><div><h3>{$viaje->id_viaje}</h3></div></a>
             </li>
         {/foreach}
         </ul>
@@ -19,10 +19,7 @@
 
     </body>
     </html>
-
-
-{* 
-{include file="footer.tpl"} *}
+{include file="footer.tpl"}
 
     {* cada vuelo tiene una fecha y hora ida, fecha y hora de vuelta, aeropuertos de llegada y salida,
     código de reserva, escala/s si las hay, informacion sobre la aeronave

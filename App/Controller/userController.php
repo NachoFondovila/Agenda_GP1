@@ -7,7 +7,7 @@ class userController {
     private $view;
     private $user='{
         "nombre": "Nacho",
-        "mail": "ifondovila@gmail.com"
+        "mail": "ignafon@gmail.com"
         }';
 
     public function __construct() {

@@ -6,7 +6,9 @@
         <input type="submit" class="centrado" value="Agregar">
     </form> *}
 
-    <form action="addVuelo" method="POST" class="formViaje formVuelo">
+
+    <form action="{BASE_URL}addVuelo" method="POST" class="formViaje formVuelo">
+
         <div>
             {if $vuelos!=null  && $vuelos|@count != 0}
             {* si el arreglo de vuelos no está vacío.. *}
@@ -20,7 +22,8 @@
                         <input name="Nvuelo" type="number" placeholder="Número de vuelo">
                     </li>
                     <li>
-                        <input type="text" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
+                        <input type="date" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
+              
                     </li>
                     <li>
                         <input name="compy" type="text" placeholder="Compañía">
@@ -30,20 +33,17 @@
         </div>
     </form>
     {foreach from=$vuelos item=$vuelo}
-        <h2 class="centrado">{$vuelo->lugarLlegada}</h2>
-        <div><h3>Número de Vuelo: {$vuelo->nroVuelo}</h3></div>
+        <h2 class="centrado">{$vuelo->id_viaje}</h2>
+        <div><h3>Número de Vuelo: {$vuelo->id_vuelo}</h3></div>
         <div><h3>Compañía: {$vuelo->compania}</h3></div>
-        <div><h3>Aeropuerto de salida: {$vuelo->aeropuertoSalida}</h3></div>
-        <div><h3>Aeropuerto de llegada: {$vuelo->aeropuertoLlegada}</h3></div>
-        <div><h3>Lugar de salida: {$vuelo->lugarSalida}</h3></div>
-        <div><h3>Fecha de regreso: {$vuelo->fechaVuelta}</h3></div>
-        <div><h3>Fecha de llegada: {$vuelo->fechaIda}</h3></div>
-        <div><h3>Hora de salida: {$vuelo->horaIda}</h3></div>
-        <div><h3>Hora de llegada: {$vuelo->horaLlegada}</h3></div>
-        <div><h3>Asiento: {$vuelo->asiento}</h3></div>
-        <div><h3>código: {$vuelo->codigoReserva}</h3></div>
-        <div><h3>Tiempo entre escalas: {$vuelo->escala}</h3></div>
-        <div><h3>Información de la aeronave: {$vuelo->infoAeronave}</h3></div>
+        <div><h3>Aeropuerto de salida: {$vuelo->id_aer_origen}</h3></div>
+        <div><h3>Aeropuerto de llegada: {$vuelo->id_aer_destino}</h3></div>
+        <div><h3>Fecha de inicio: {$vuelo->fecha_inic}</h3></div>
+        <div><h3>Fecha de fin: {$vuelo->fecha_fin}</h3></div>
+        <div><h3>Asiento: {$vuelo->nro_asiento}</h3></div>
+        <div><h3>Código: {$vuelo->cod_reserva}</h3></div>
+        <div><h3>Información de la aeronave: {$vuelo->aeronave}</h3></div>
+
     {/foreach}
     
     </body>

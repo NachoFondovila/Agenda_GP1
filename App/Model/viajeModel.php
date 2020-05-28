@@ -5,11 +5,13 @@ class viajeModel {
     protected $db;
 
     function __construct(){
-        $this->db = new PDO('mysql:host=localhost;dbname=metodologias;charset=utf8', 'root', '');
+        //$this->db = new PDO('mysql:host=localhost;dbname=metodologias;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;'.'dbname=metodologias;charset=utf8', 'root', '');
     }
 
     public function addViaje($idViaje,$email,$descripcion) {
-        $viaje= $this->db->prepare("INSERT INTO tpe_met_viaje(id_viaje,email, descripcion) VALUES(?,?,?)");
+        $viaje = $this->db->prepare("INSERT INTO tpe_met_viaje(id_viaje, email, descripcion) VALUES(?,?,?)");
+
         $viaje->execute(array($idViaje,$email,$descripcion));
     }
 
