@@ -22,3 +22,4 @@ class aeropuertoModel{
         $aeropuerto= $this->db->prepare("DELETE FROM aeropuerto WHERE id_aeropuerto=? ");
         $aeropuerto->execute(array($idAero));
     }
+}

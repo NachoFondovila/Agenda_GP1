@@ -15,10 +15,11 @@ class escalaModel{
 
     public function update($idAero,$idVuelo,$tiempo){
         $query = $this->db->prepare('UPDATE escala SET tiempo_escala WHERE id_vuelo = ? and id_aeropuerto=? ' );
-        $query->execute(array(($tiempo,$idAero,$idVuelo));
+        $query->execute(array($tiempo,$idAero,$idVuelo));
     }
 
     public function deleteEscala($idAero,$idVuelo){
         $viaje= $this->db->prepare("DELETE FROM escala WHERE id_aeropuerto=? and id_vuelo=? ");
         $viaje->execute(array($idAero,$idVuelo));
     }
+}
