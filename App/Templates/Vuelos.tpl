@@ -6,7 +6,9 @@
         <input type="submit" class="centrado" value="Agregar">
     </form> *}
 
+
     <form action="{BASE_URL}addVuelo" method="POST" class="formViaje formVuelo">
+
         <div>
             {if $vuelos!=null  && $vuelos|@count != 0}
             {* si el arreglo de vuelos no está vacío.. *}
@@ -21,7 +23,7 @@
                     </li>
                     <li>
                         <input type="date" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
-                        <!-- Arreglar fecha porque en la base figura como timestamp y no lo toma si es text -->
+              
                     </li>
                     <li>
                         <input name="compy" type="text" placeholder="Compañía">
@@ -41,6 +43,7 @@
         <div><h3>Asiento: {$vuelo->nro_asiento}</h3></div>
         <div><h3>Código: {$vuelo->cod_reserva}</h3></div>
         <div><h3>Información de la aeronave: {$vuelo->aeronave}</h3></div>
+
     {/foreach}
     
     </body>

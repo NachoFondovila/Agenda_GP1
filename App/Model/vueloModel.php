@@ -9,7 +9,6 @@ class vueloModel{
         $this->db = new PDO('mysql:host=localhost;dbname=metodologias;charset=utf8', 'root', '');
         $this->api="http:flystats";
     }
-
     function addVuelo($id_vuelo, $fecha_inic, $compania, $fecha_fin, $cod_reserva, $aeronave, $id_user, $ae_origen, $ae_destino, $asiento, $id_viaje) {
         $viaje= $this->db->prepare("INSERT INTO tpe_met_vuelo(id_vuelo,fecha_inic,fecha_fin,cod_reserva, compania, aeronave,id_aer_origen,id_aer_destino,nro_asiento,id_viaje,email) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
         $viaje->execute(array($id_vuelo, $fecha_inic, $fecha_fin, $cod_reserva, $compania, $aeronave, $ae_origen, $ae_destino,$asiento,$id_viaje,$id_user['MAIL']));

@@ -19,8 +19,6 @@
 
     </body>
     </html>
-
-
 {include file="footer.tpl"}
 
     {* cada vuelo tiene una fecha y hora ida, fecha y hora de vuelta, aeropuertos de llegada y salida,
