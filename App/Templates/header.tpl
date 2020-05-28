@@ -12,6 +12,7 @@
     <body>
 
     <input type="hidden" id="user_id" value={$user['MAIL']}>
+
         <div class="logo">
             {if ($user['USERNAME']=='')}
                 <a class=" ">Visitante</a>

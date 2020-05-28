@@ -10,6 +10,7 @@ class vueloView{
     }
 
     function showVuelos($vuelos,$user,$viaje){
+        //Va a recibir los vuelos y el viaje de un usuario logueado y serán mostrados por pantalla.
         $this->smarty->assign('user', $user);
         $this->smarty->assign('vuelos', $vuelos);
         $this->smarty->assign('viaje', $viaje);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2020-05-27 18:00:05
+/* Smarty version 3.1.33, created on 2020-05-27 22:25:09
   from 'C:\xampp\htdocs\App\Templates\Viajes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ece8e8515bfc8_77386535',
+  'unifunc' => 'content_5ececca544e608_42540969',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3075f2c42754a1caa4c56ceb1edd908b2d33a11c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\App\\Templates\\Viajes.tpl',
-      1 => 1590595199,
+      1 => 1590610842,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ece8e8515bfc8_77386535 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ececca544e608_42540969 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -59,7 +59,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
 <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
-    <?php }
+}
 }

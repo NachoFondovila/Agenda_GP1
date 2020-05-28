@@ -1,6 +1,5 @@
 <?php
 
-// require_once "Controller\userController.php";
 require_once "Controller/viajeController.php";
 require_once "Controller/vueloController.php";
 require_once "Controller/emailController.php";
@@ -15,10 +14,6 @@ $r->addRoute("addViaje","POST","viajeController","addViaje");
 $r->addRoute("showVuelos/:VIAJE","GET","vueloController","showVuelos");
 $r->addRoute("addVuelo","POST","vueloController","addVuelo");
 
-// $r->addRoute("viajes","GET","userController","showView");
-// no necesaria hasta que cambiemos el default..
-
-// $r->setDefaultRoute("userController","showView");
 $r->setDefaultRoute("viajeController","showViajes");
 
 $r->route($_GET['action'],$_SERVER['REQUEST_METHOD']);
