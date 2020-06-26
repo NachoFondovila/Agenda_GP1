@@ -4,7 +4,7 @@ Criterios de DONE:
 
 2. Verificar que los criterios de aceptación de cada US estén debidamente cumplidos.
 
-3. Al menos un miembro del equipo debe revisar el trabajo
-que realiza otro compañero.
+3. Al menos un miembro del equipo debe revisar el trabajo que realiza otro compañero.
+(para eso se decidio utilizar un cuadro de designaciones entre los integrantes)
 
 4. Cada commit debe contemplar una breve descripción de lo realizado. 

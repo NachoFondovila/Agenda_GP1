@@ -29,6 +29,15 @@ footer {
     margin-top: 5%;
 }
 /* Estilos de showViajes----------------- */
+.datVuelos {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+   }
 /* Form de crear viaje----------------- */
 .formViaje{
     width: 80vw;
@@ -89,6 +98,7 @@ footer {
 .list4columnas a{
     text-decoration: none;
 }
+
 .list4columnas h3{
     margin: 0;
     color: #4e4e4e;
@@ -111,7 +121,7 @@ footer {
     display: flex;
 }
 .formVuelo input[type="date"], .formVuelo input[type="number"], .formVuelo input[type="text"]{
-    height: 8vw;
+    height: 6vw;
     width: 25vw;
     padding-left: 2vw;
 }
@@ -129,4 +139,9 @@ footer {
 }
 .listInputs{
     list-style: none;
+}
+
+iframe {
+    margin: 0 auto;
+    display: block;
 }

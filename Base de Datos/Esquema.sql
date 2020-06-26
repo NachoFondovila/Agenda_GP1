@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2020 a las 23:58:36
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Tiempo de generación: 22-05-2020 a las 01:02:46
+-- Versión del servidor: 10.1.40-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,14 +33,6 @@ CREATE TABLE `tpe_met_aeropuerto` (
   `nombre` varchar(20) NOT NULL,
   `ciudad` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tpe_met_aeropuerto`
---
-
-INSERT INTO `tpe_met_aeropuerto` (`id_aeropuerto`, `nombre`, `ciudad`) VALUES
-(1, 'primero', 'alguna'),
-(2, 'segundo', 'otro');
 
 -- --------------------------------------------------------
 
@@ -79,13 +72,6 @@ CREATE TABLE `tpe_met_usuario` (
   `fecha_nac` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tpe_met_usuario`
---
-
-INSERT INTO `tpe_met_usuario` (`email`, `nombre`, `apellido`, `fecha_nac`) VALUES
-('ignafon@gmail.com', 'Nacho', 'Fondovila', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -98,15 +84,6 @@ CREATE TABLE `tpe_met_viaje` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tpe_met_viaje`
---
-
-INSERT INTO `tpe_met_viaje` (`id_viaje`, `descripcion`, `email`) VALUES
-('Barcelona', 'España', 'ignafon@gmail.com'),
-('Madrid', 'España', 'ignafon@gmail.com'),
-('Roma', 'Italia', 'ignafon@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -115,8 +92,8 @@ INSERT INTO `tpe_met_viaje` (`id_viaje`, `descripcion`, `email`) VALUES
 
 CREATE TABLE `tpe_met_vuelo` (
   `id_vuelo` int(11) NOT NULL,
-  `fecha_inic` date NOT NULL DEFAULT current_timestamp(),
-  `fecha_fin` date NOT NULL,
+  `fecha_inic` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fecha_fin` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `cod_reserva` int(11) NOT NULL,
   `compania` varchar(20) NOT NULL,
   `nro_asiento` int(11) NOT NULL,
@@ -126,14 +103,6 @@ CREATE TABLE `tpe_met_vuelo` (
   `id_viaje` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tpe_met_vuelo`
---
-
-INSERT INTO `tpe_met_vuelo` (`id_vuelo`, `fecha_inic`, `fecha_fin`, `cod_reserva`, `compania`, `nro_asiento`, `aeronave`, `id_aer_origen`, `id_aer_destino`, `id_viaje`, `email`) VALUES
-(12, '6222-02-25', '2020-11-01', 1, 'Gol', 1, 'Nave1', 1, 2, 'Roma', 'ignafon@gmail.com'),
-(444, '4444-04-04', '2020-11-01', 1, 'Aerolineas Argentina', 1, 'Nave1', 1, 2, 'Roma', 'ignafon@gmail.com');
 
 --
 -- Índices para tablas volcadas

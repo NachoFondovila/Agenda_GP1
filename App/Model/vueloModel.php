@@ -5,7 +5,6 @@ class vueloModel{
     protected $db;
     protected $api;
 
-    
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;dbname=metodologias;charset=utf8', 'root', '');
         $this->api="http:flystats";

@@ -3,9 +3,12 @@
         <form action="addViaje" method="POST" class="formViaje">
             <input type="hidden" name="user_id" value={$user['MAIL']}
             <h2 class="centrado">Agrega tu viaje</h2>
-            <input type="text" class="centrado" name="name" placeholder="Nombre">
-            <textarea name="desc" cols="40" rows="5" class="centrado" placeholder="Descripción"></textarea>
-            <input type="submit" class="centrado" value="Agregar">
+            <input type="text" class="centrado" name="name" placeholder="Nombre" required>
+            <textarea name="desc" cols="40" rows="5" class="centrado" placeholder="Descripción" required></textarea>
+            <div class="centrado">
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+            <!--<input type="submit" class="centrado" value="Agregar">-->
         </form> 
         <h2 class="centrado">Mis viajes</h2>
         <ul class="list4columnas">

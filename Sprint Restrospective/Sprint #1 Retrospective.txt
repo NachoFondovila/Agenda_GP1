@@ -1,0 +1,15 @@
+Sprint #1 Retrospective
+
+Lista de participantes:
+	● Asistió todo el equipo de desarrollo.
+
+¿Qué funcionó bien?
+	● El Poker Planning dió resultados abiertos a discusión pero se llegó a un acuerdo.
+	● Las consultas al Product Owner fueron resueltas a la brevedad.
+¿Qué se puede mejorar?
+	● Tener en claro lo que propone la metodología de Scrum en relación a la toma de
+tareas para su desarrollo.
+	● Para llevar a cabo el criterios de done propuesto, tener una lista de cuál compañero
+	  verificará el trabajo de otro.
+¿Qué nos comprometemos a hacer para el próximo Sprint?
+	● Lograr un desarrollo que cumpla con las correcciones dadas.
