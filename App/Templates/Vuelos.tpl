@@ -28,6 +28,7 @@
         </div>
     </form>
     <div>
+
         {foreach from=$vuelos item=$vuelo}
             <ul class="datVuelos">
                 <li><h3>Número de Vuelo:</h3> {$vuelo->id_vuelo}</li>
@@ -41,6 +42,7 @@
                 <li><h3>Código:</h3> {$vuelo->cod_reserva}</li>
             </ul>
         {/foreach}
+
     </div>
     <h3 class="centrado">Mapa del viaje</h3>
     {if $viaje == "Roma"}
@@ -58,6 +60,7 @@
         {if $viaje == "Paris"}
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1guJTU8YkoqK685qOuCMGR1rCpRnXKXo0" width="80%" height="500"></iframe>
         {/if}
+
     </body>
     </html>
     {include "footer.tpl"}
