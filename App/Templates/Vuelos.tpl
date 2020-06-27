@@ -1,4 +1,5 @@
 {include file="header.tpl"}
+<h2 class="centrado">{$viaje}</h2>
     <form action="{BASE_URL}addVuelo" method="POST" class="formViaje formVuelo">
         <div>
             {if $vuelos!=null  && $vuelos|@count != 0}
@@ -41,6 +42,7 @@
             </ul>
         {/foreach}
     </div>
+    <h3 class="centrado">Mapa del viaje</h3>
     </body>
     </html>
     {include "footer.tpl"}
