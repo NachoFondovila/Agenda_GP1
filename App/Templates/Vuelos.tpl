@@ -43,6 +43,21 @@
         {/foreach}
     </div>
     <h3 class="centrado">Mapa del viaje</h3>
+    {if $viaje == "Roma"}
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1MvUOQP1SIhbkWuUmM7EEvHcKeqcRd7vL" width="80%" height="500"></iframe>
+        {/if}
+        {if $viaje == "Barcelona"}
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ZY8TtjctQTEvI6VTedpL6nEJvwrFPcKT" width="80%" height="500"></iframe>
+        {/if}
+        {if $viaje == "Madrid"}
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=11q7K5wUAyOHFPkTSAbLu0BUraOUZe2hb" width="80%" height="500"></iframe>
+        {/if}
+        {if $viaje == "Mar del Plata"}
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1E7IX-2bj8U77SLnVNKZh_bRm1Ul9n717" width="80%" height="500"></iframe>
+        {/if}
+        {if $viaje == "Paris"}
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1guJTU8YkoqK685qOuCMGR1rCpRnXKXo0" width="80%" height="500"></iframe>
+        {/if}
     </body>
     </html>
     {include "footer.tpl"}
