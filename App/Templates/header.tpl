@@ -17,7 +17,7 @@
             {if ($user['USERNAME']=='')}
                 <a class=" ">Visitante</a>
             {else}    
-                <a class=" ">{$user['USERNAME']}</a>
+                <h3><a class=" ">{$user['USERNAME']}</a></h3>
             {/if}
             <a href= "{$base}"> 
                 <img src="{$base}FlyingApp.png">

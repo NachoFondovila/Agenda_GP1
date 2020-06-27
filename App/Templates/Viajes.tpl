@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
         <form action="addViaje" method="POST" class="formViaje">
-            <input type="hidden" name="user_id" value={$user['MAIL']}
+            <input type="hidden" name="user_id" value={$user['MAIL']}>
             <h2 class="centrado">Agrega tu viaje</h2>
             <input type="text" class="centrado" name="name" placeholder="Nombre" required>
             <textarea name="desc" cols="40" rows="5" class="centrado" placeholder="Descripción" required></textarea>

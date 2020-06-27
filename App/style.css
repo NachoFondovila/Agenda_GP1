@@ -1,10 +1,26 @@
 /* Estilos generales---------------------- */
+/* Tamaño de fuentes */
+h1{
+    font-size: 3vw;
+}
+h2{
+    font-size: 2vw;
+}
+h3{
+    font-size: 0vw;
+}
+h4{
+    font-size: 1vw;
+}
 /* Imagen del logo */
 .logo{
     display: flex;
+    padding-top: 2vw;
+    padding-bottom: 1vw;
     flex-direction: row;
     justify-content: space-around;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-shadow: 2px 2px 4px #777;
 }
 .logo img{
     height: auto;
@@ -144,4 +160,25 @@ footer {
 iframe {
     margin: 0 auto;
     display: block;
+}
+.recuadrado{
+    width: 55vw;
+    padding: 2vw;
+    border: 3px solid #f9a132;
+    border-radius: 2.3vw;
+    margin: auto;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+.recuadrado h3{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.recuadro>h3 span{
+    width: 50%;
+}
+/* -------------------------------- */
+.nombre{
+    font-weight: 600;
 }

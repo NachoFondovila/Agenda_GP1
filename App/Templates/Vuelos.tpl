@@ -4,17 +4,17 @@
         <div>
             {if $vuelos!=null  && $vuelos|@count != 0}
             {* si el arreglo de vuelos no está vacío.. *}
-                <h3 class="centrado</h3>">Agregá una escala 
+                <h3 class="centrado">Agregá una escala</h3>
             {else}
                 <h2 class="centrado">Personalizá tu vuelo</h2>
             {/if}
                 <ul class="listInputs">
-                    <input type="hidden" name="viaje" value={$viaje}
+                    <input type="hidden" name="viaje" value={$viaje}>
                     <li>
-                        <input name="Nvuelo" type="number" placeholder="Número de vuelo">
+                        <input name="Nvuelo" type="number" placeholder="Número de vuelo" required>
                     </li>
                     <li>
-                        <input type="date" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida">
+                        <input type="date" name="fecha" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha de ida" required>
 
                     </li>
                     <li>
@@ -41,6 +41,7 @@
                 <li><h3>Asiento:</h3> {$vuelo->nro_asiento}</li>
                 <li><h3>Código:</h3> {$vuelo->cod_reserva}</li>
             </ul>
+            </br></br>
         {/foreach}
 
     </div>
@@ -60,6 +61,7 @@
         {if $viaje == "Paris"}
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1guJTU8YkoqK685qOuCMGR1rCpRnXKXo0" width="80%" height="500"></iframe>
         {/if}
+        {include file="EstadisticasViaje.tpl"}
 
     </body>
     </html>
