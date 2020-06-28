@@ -24,15 +24,22 @@ class vueloModel{
     }
 
     // Borra el vuelo que se envía por parámetro.
-    public function deleteVuelo($idVuelo){
+    public function deleteVuelo($idVuelo) {
         $viaje= $this->db->prepare("DELETE FROM tpe_met_vuelo WHERE id_vuelo=? ");
         $viaje->execute(array($idVuelo));
     }
 
     // Esta función obtiene todos los vuelos que fueron cargados por un usuario.
-    public function getVuelos($viajeNombre){
+    public function getVuelos($viajeNombre) {
         $viaje= $this->db->prepare("SELECT * FROM tpe_met_vuelo WHERE id_viaje = ?");
         $viaje->execute(array($viajeNombre));
         return $viaje -> fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getTotalVuelos() {
+        $vuelos= $this->db->prepare("SELECT COUNT(*) FROM tpe_met_vuelo");
+        $vuelos->execute();
+        return $vuelos -> fetch(PDO::FETCH_COLUMN);
+    }
+
 }

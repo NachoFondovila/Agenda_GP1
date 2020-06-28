@@ -18,7 +18,7 @@
             </li>
         {/foreach}
         </ul>
-
+        {include file= "EstadisticasUsuario.tpl"}
 
     </body>
     </html>

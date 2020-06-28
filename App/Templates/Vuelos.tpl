@@ -29,20 +29,22 @@
     </form>
     <div>
 
+        <div class= "datVuelos">
         {foreach from=$vuelos item=$vuelo}
-            <ul class="datVuelos">
-                <li><h3>Número de Vuelo:</h3> {$vuelo->id_vuelo}</li>
-                <li><h3>Información de la aeronave:</h3> {$vuelo->aeronave}</li>
-                <li><h3>Compañía:</h3> {$vuelo->compania}</li>
-                <li><h3>Aeropuerto de salida:</h3> {$vuelo->id_aer_origen}</li>
-                <li><h3>Aeropuerto de llegada:</h3> {$vuelo->id_aer_destino}</li>
-                <li><h3>Fecha de inicio:</h3> {$vuelo->fecha_inic}</li>
-                <li><h3>Fecha de fin: </h3>{$vuelo->fecha_fin}</li>
-                <li><h3>Asiento:</h3> {$vuelo->nro_asiento}</li>
-                <li><h3>Código:</h3> {$vuelo->cod_reserva}</li>
-            </ul>
+                <ul>
+                    <li><h4>Número de Vuelo:</h4> <h5>{$vuelo->id_vuelo}</h5></li>
+                    <li><h4>Información de la aeronave:</h4> <h5>{$vuelo->aeronave}</h5></li>
+                    <li><h4>Compañía:</h4> <h5>{$vuelo->compania}</h5></li>
+                    <li><h4>Aeropuerto de salida:</h4> <h5>{$vuelo->id_aer_origen}</h5></li>
+                    <li><h4>Aeropuerto de llegada:</h4> <h5>{$vuelo->id_aer_destino}</h5></li>
+                    <li><h4>Fecha de inicio:</h4> <h5>{$vuelo->fecha_inic}</h5></li>
+                    <li><h4>Fecha de fin: </h4> <h5>{$vuelo->fecha_fin}</h5></li>
+                    <li><h4>Asiento:</h4> <h5>{$vuelo->nro_asiento}</h5></li>
+                    <li><h4>Código:</h4> <h5>{$vuelo->cod_reserva}</h5></li>
+                </ul>
             </br></br>
         {/foreach}
+        </div>
 
     </div>
     <h3 class="centrado">Mapa del viaje</h3>

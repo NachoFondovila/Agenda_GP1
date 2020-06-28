@@ -11,10 +11,12 @@ class viajeView{
         $this->smarty->assign('base',BASE_URL);
     }
 
-    function showViajes($viajes,$user){
+    function showViajes($viajes,$user, $allVuelos){
         //Va a recibir el usuario y sus viajes para ser mostrados por pantalla
         $this->smarty->assign('user', $user);
         $this->smarty->assign('viajes', $viajes);
+        $this->smarty->assign('allVuelos', $allVuelos);
         $this->smarty->display('Templates/Viajes.tpl');
     }
+
 }

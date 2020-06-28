@@ -44,7 +44,7 @@ class vueloController {
         if(!empty($id_vuelo) && !empty($fecha_inic) && !empty($compania)){
             $this->model->addVuelo($id_vuelo, $fecha_inic, $compania, $fecha_fin, $cod_reserva, $aeronave, $id_user, $ae_origen, $ae_destino, $asiento, $id_viaje);
 
-            header("Location: " . BASE_URL);
+            header("Location: " . BASE_URL . "showVuelos/{$id_viaje}");
         }
         else{
             echo("faltan completar los campos obligatorios.");
